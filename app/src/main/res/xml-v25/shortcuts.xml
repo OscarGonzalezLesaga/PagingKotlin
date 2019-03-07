@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:icon="@drawable/ic_airplanemode"
+        android:shortcutId="detail"
+        android:shortcutLongLabel="@string/longLabelShortcut"
+        android:shortcutShortLabel="@string/shortLabelShortcut">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.oscar.gonzalez.lesaga.paging.presentation.MainActivity"
+            android:targetPackage="com.oscar.gonzalez.lesaga.paging">
+
+            <extra
+                android:name="origin"
+                android:value="avion" />
+
+        </intent>
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+    <shortcut
+        android:icon="@drawable/ic_wc"
+        android:shortcutId="wc"
+        android:shortcutLongLabel="@string/longLabelShortcut"
+        android:shortcutShortLabel="@string/shortLabelShortcut2">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.oscar.gonzalez.lesaga.paging.presentation.MainActivity"
+            android:targetPackage="com.oscar.gonzalez.lesaga.paging">
+            <extra
+                android:name="origin"
+                android:value="wc" />
+        </intent>
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+</shortcuts>

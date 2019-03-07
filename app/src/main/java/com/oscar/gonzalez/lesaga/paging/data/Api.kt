@@ -1,4 +1,4 @@
-package com.oscar.gonzalez.lesaga.paging
+package com.oscar.gonzalez.lesaga.paging.data
 
 import retrofit2.Call
 import retrofit2.http.GET

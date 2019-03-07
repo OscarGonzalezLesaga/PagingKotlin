@@ -1,4 +1,4 @@
-package com.oscar.gonzalez.lesaga.paging
+package com.oscar.gonzalez.lesaga.paging.data
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -12,7 +12,8 @@ class RetrofitClient {
 
         fun getInstance(): RetrofitClient {
             if (mInstance == null) {
-                mInstance = RetrofitClient()
+                mInstance =
+                    RetrofitClient()
             }
             return mInstance as RetrofitClient
         }
@@ -22,5 +23,6 @@ class RetrofitClient {
         retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
     }
 
-    fun getApi(): Api = retrofit.create(Api::class.java)
+    fun getApi(): Api = retrofit.create(
+        Api::class.java)
 }

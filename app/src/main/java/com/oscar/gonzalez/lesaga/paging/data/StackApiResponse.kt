@@ -1,4 +1,4 @@
-package com.oscar.gonzalez.lesaga.paging
+package com.oscar.gonzalez.lesaga.paging.data
 
 data class Owner(
     val reputation: Int,

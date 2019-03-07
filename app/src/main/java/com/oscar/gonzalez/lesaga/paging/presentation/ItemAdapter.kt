@@ -1,4 +1,4 @@
-package com.oscar.gonzalez.lesaga.paging
+package com.oscar.gonzalez.lesaga.paging.presentation
 
 import android.arch.paging.PagedListAdapter
 import android.content.Context
@@ -9,18 +9,39 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.oscar.gonzalez.lesaga.paging.R.id
+import com.oscar.gonzalez.lesaga.paging.R.layout
+import com.oscar.gonzalez.lesaga.paging.data.Item
+import com.oscar.gonzalez.lesaga.paging.data.Owner
+import com.oscar.gonzalez.lesaga.paging.presentation.ItemAdapter.ItemViewHolder
 import com.squareup.picasso.Picasso
 
-class ItemAdapter(val context: Context) : PagedListAdapter<Item, ItemAdapter.ItemViewHolder>(diff_callback) {
+class ItemAdapter(val context: Context) : PagedListAdapter<Item, ItemViewHolder>(
+    diff_callback
+) {
+
+    var itemListener: ((userName: Owner) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int) =
-        ItemViewHolder(LayoutInflater.from(context).inflate(R.layout.recyclerview_item, parent, false))
+        ItemViewHolder(
+            LayoutInflater.from(context).inflate(
+                layout.recyclerview_item,
+                parent,
+                false
+            )
+        )
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = getItem(position)
+
+
         item?.let {
             Picasso.get().load(it.owner.profile_image).into(holder.imageView)
             holder.textView?.text = item.owner.display_name
+
+            holder.itemView.setOnClickListener {
+                itemListener?.invoke(item.owner)
+            }
         }
     }
 
@@ -38,8 +59,8 @@ class ItemAdapter(val context: Context) : PagedListAdapter<Item, ItemAdapter.Ite
         var textView: TextView? = null
 
         init {
-            imageView = itemView.findViewById(R.id.imageView)
-            textView = itemView.findViewById(R.id.textViewName)
+            imageView = itemView.findViewById(id.imageView)
+            textView = itemView.findViewById(id.textViewName)
         }
     }
 }
